@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    main{
+        width: 100%;
+        height: 100vh;
+        background-image: url(num.jpg);
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    main>div{
+        width: 500px;
+        height: 300px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        border: 1px solid black;
+        border-radius: 5px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 1s;
+        overflow: hidden;
+        background-color: white;
+    }
+    main>div>p{
+        width: 100%;
+        height: 50%;
+        /* border: 2px solid blue; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px;
+    }
+    main>div>button{
+        width: 20%;
+        height: 30px;
+        border: 1px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #_hard{
+        width: 300px;
+        height: 100px;
+        background-color: ;
+        cursor: pointer;
+        font-size: 30px;
+    }
+    #_easy{
+        width: 300px;
+        height: 100px;
+        cursor: pointer;
+        font-size: 30px;
+    }
+</style>
+<body>
+    <main>
+        <div id="popup">
+            <p>سلام، در این بازی دو مرحله وجود دارد. با انتخاب هر کدام از مراحل کامپیوتر یک عدد تصادفی بین بازه ۱ تا ۱۰ انتخاب میکند و شما باید آن را با توجه به تعداد شانس ها و کمک کامپیوتر حدس بزنید. در مرحله سخت شما ۳ شانس و در مرحله آسان شما ۵ شانس دارید. امیدوارم از این بازی لذت ببرید (علیرضا افراسیابی)</p>
+            <button id="pop">بستن</button>
+        </div>
+        <button id="_hard">hard</button>
+        <button id="_easy">easy</button>
+    </main>
+
+</body>
+<script>
+
+// game introduce with popup 
+
+document.getElementById('pop').addEventListener('click', function(){
+    // document.getElementById('popup').style.height = 0
+    // document.getElementById('popup').style.width = 0
+    document.getElementById('popup').style.display = 'none'
+})
+
+// hard 
+
+document.getElementById('_hard').addEventListener('click', function(){
+    
+    let _randnum = parseInt((Math.random())*11)
+    
+    console.log(_randnum)
+    
+    let chancehard = 3
+
+    function _inptnum(){
+
+        for(i=0 ; i<3 ; i++){
+        let _guess = prompt('what is your guess : ')
+        if(_randnum == _guess){
+            alert('you win !')
+        }
+        if(_randnum < _guess){
+            alert('guess a smaller number')
+        }
+        if(_randnum > _guess){
+            alert('guess a bigger number')
+        }
+        chancehard--
+        alert('remain chance : ' + chancehard)
+        }
+
+    }
+
+    _inptnum()
+
+})
+
+// easy 
+
+document.getElementById('_easy').addEventListener('click', function(){
+    
+    let _randnum = parseInt((Math.random())*11)
+    
+    console.log(_randnum)
+    
+    let chancehard = 5
+
+    function _inptnum(){
+        
+        let _guess
+
+        for(i=0 ; i<5 ; i++){
+        _guess = prompt('what is your guess : ')
+        if(_randnum == _guess){
+            alert('you win !')
+        }
+        if(_randnum < _guess){
+            alert('guess a smaller number')
+        }
+        if(_randnum > _guess){
+            alert('guess a bigger number')
+        }
+        chancehard--
+        alert('remain chance : ' + chancehard)
+        }
+
+    }
+
+    _inptnum()
+
+})
+
+
+</script>
+</html>
